@@ -21,16 +21,21 @@ android {
         versionCode rootProject.ext.android["versionCode"]
         versionName rootProject.ext.android["versionName"]
 
+        // ARouter 配置
         javaCompileOptions {
             annotationProcessorOptions {
                 arguments = [moduleName: project.getName()]
             }
         }
+
+        // ARouter 配置(Kotlin 写法)
         kapt {
             arguments {
                 arg("moduleName", project.getName())
             }
         }
+
+        multiDexEnabled true
     }
 
     buildTypes {

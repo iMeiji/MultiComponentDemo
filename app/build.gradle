@@ -11,6 +11,7 @@ android {
         versionCode rootProject.ext.android["versionCode"]
         versionName rootProject.ext.android["versionName"]
 
+        // ARouter 配置
         javaCompileOptions {
             annotationProcessorOptions {
                 arguments = [moduleName: project.getName()]
@@ -40,5 +41,6 @@ dependencies {
         implementation project(":moduledashboard")
     }
 
+    // apt 插件每个模块要单独引用
     annotationProcessor lib_arouter_compiler
 }

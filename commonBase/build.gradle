@@ -9,6 +9,8 @@ android {
         targetSdkVersion rootProject.ext.android["targetSdkVersion"]
         versionCode rootProject.ext.android["versionCode"]
         versionName rootProject.ext.android["versionName"]
+
+        multiDexEnabled true
     }
 
     buildTypes {
@@ -33,8 +35,15 @@ dependencies {
     api support_recyclerview_v7
     api support_constraint_layout
     api support_vector_drawable
+    api support_multidex
 
     api lib_rxjava2
     api lib_rxandroid2
     api lib_arouter_api
+
+    // test
+    api lib_junit
+    api lib_runner
+    api lib_espresso
+
 }

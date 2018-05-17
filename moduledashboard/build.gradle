@@ -17,11 +17,14 @@ android {
         versionCode rootProject.ext.android["versionCode"]
         versionName rootProject.ext.android["versionName"]
 
+        // ARouter 配置
         javaCompileOptions {
             annotationProcessorOptions {
                 arguments = [moduleName: project.getName()]
             }
         }
+
+        multiDexEnabled true
     }
 
     buildTypes {
@@ -35,6 +38,7 @@ android {
 
     sourceSets {
         main {
+            // 设置两套 AndroidManifest
             if (isBuildModule.toBoolean()) {
                 manifest.srcFile 'src/main/debug/AndroidManifest.xml'
             } else {
