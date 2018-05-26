@@ -3,17 +3,20 @@ package com.meiji.multicomponentdemo;
 import android.os.Bundle;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
-import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.FrameLayout;
 import android.widget.Toast;
 
 import com.alibaba.android.arouter.launcher.ARouter;
-import com.meiji.commonbase.RouterConstant;
+import com.meiji.commonbase.BaseActivity;
+import com.meiji.commonbase.Constant;
 import com.meiji.commonbase.router.IModuleHomeProvider;
 
-public class AppMainActivity extends AppCompatActivity {
+/**
+ * App 主界面
+ */
+public class AppMainActivity extends BaseActivity {
 
     private FrameLayout mFrameLayout;
 
@@ -21,9 +24,10 @@ public class AppMainActivity extends AppCompatActivity {
             = item -> {
         switch (item.getItemId()) {
             case R.id.navigation_home:
+                // UI 跳转
                 Fragment home = (Fragment) ARouter.getInstance()
-                        .build(RouterConstant.toHomeFragment)
-                        .withString("key", "from AppMainActivity")
+                        .build(Constant.Router.toHomeFragment)
+                        .withString(Constant.EXTRA_KEY, "from AppMainActivity")
                         .navigation();
                 if (home != null) {
                     getSupportFragmentManager().beginTransaction().replace(R.id.frameLayout, home).commit();
@@ -31,14 +35,21 @@ public class AppMainActivity extends AppCompatActivity {
                 return true;
             case R.id.navigation_dashboard:
                 Fragment dash = (Fragment) ARouter.getInstance()
-                        .build(RouterConstant.toDashFragment)
-                        .withString("key", "from AppMainActivity")
+                        .build(Constant.Router.toDashFragment)
+                        .withString(Constant.EXTRA_KEY, "from AppMainActivity")
                         .navigation();
                 if (dash != null) {
                     getSupportFragmentManager().beginTransaction().replace(R.id.frameLayout, dash).commit();
                 }
                 return true;
             case R.id.navigation_notifications:
+                Fragment noti = (Fragment) ARouter.getInstance()
+                        .build(Constant.Router.toNotiFragment)
+                        .withString(Constant.EXTRA_KEY, "from AppMainActivity")
+                        .navigation();
+                if (noti != null) {
+                    getSupportFragmentManager().beginTransaction().replace(R.id.frameLayout, noti).commit();
+                }
                 return true;
         }
         return false;
@@ -54,6 +65,7 @@ public class AppMainActivity extends AppCompatActivity {
     private void initView() {
         BottomNavigationView navigation = findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
+        navigation.setSelectedItemId(R.id.navigation_home);
         mFrameLayout = findViewById(R.id.frameLayout);
     }
 
@@ -67,9 +79,12 @@ public class AppMainActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.menu_toHomeProvider:
-                IModuleHomeProvider o = (IModuleHomeProvider) ARouter.getInstance().build(RouterConstant.toHomeProvider).navigation();
+                // 调用组件某个类的方法
+                IModuleHomeProvider o = (IModuleHomeProvider) ARouter.getInstance()
+                        .build(Constant.Router.toHomeProvider)
+                        .navigation();
                 if (o != null) {
-                    String homeName = o.getHomeName(233);
+                    String homeName = o.showMsg("from AppMainActivity");
                     Toast.makeText(this, homeName, Toast.LENGTH_SHORT).show();
                 }
                 break;

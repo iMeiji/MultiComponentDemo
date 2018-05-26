@@ -1,3 +1,10 @@
 <resources>
-    <string name="app_name">commonBase</string>
+    <string name="app_name">MultiComponentDemo</string>
+    <string name="module_home_name">moduleHome</string>
+    <string name="module_dash_name">moduleDashboard</string>
+    <string name="module_noti_name">moduleNotifications</string>
+
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
 </resources>

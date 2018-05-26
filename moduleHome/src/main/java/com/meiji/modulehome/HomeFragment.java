@@ -1,6 +1,7 @@
 package com.meiji.modulehome;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -11,9 +12,12 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
-import com.meiji.commonbase.RouterConstant;
+import com.meiji.commonbase.Constant;
 
-@Route(path = RouterConstant.toHomeFragment)
+/**
+ * 模块页面
+ */
+@Route(path = Constant.Router.toHomeFragment)
 public class HomeFragment extends Fragment {
 
     private TextView mTextView;
@@ -27,12 +31,15 @@ public class HomeFragment extends Fragment {
         Bundle bundle = getArguments();
         if (bundle != null) {
             mTextView.setText(mTextView.getText() + "\n"
-                    + "get getArguments = " + bundle.getString("key"));
+                    + "get getArguments = " + bundle.getString(Constant.EXTRA_KEY));
         }
         return v;
     }
 
     private void initView(View v) {
-        mTextView = v.findViewById(R.id.textView);
+        mTextView = v.findViewById(R.id.module_home_textView);
+        mTextView.setOnClickListener(view -> {
+            getContext().startActivity(new Intent(getContext(), HomeActivity.class));
+        });
     }
 }

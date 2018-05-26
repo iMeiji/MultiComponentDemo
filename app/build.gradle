@@ -1,6 +1,5 @@
 apply plugin: 'com.android.application'
 
-
 android {
     compileSdkVersion rootProject.ext.android["compileSdkVersion"]
     buildToolsVersion rootProject.ext.android["buildToolsVersion"]
@@ -38,7 +37,8 @@ dependencies {
         implementation project(":commonBase")
     } else {
         implementation project(":moduleHome")
-        implementation project(":moduledashboard")
+        implementation project(":moduleDashboard")
+        implementation project(":moduleNotifications")
     }
 
     // apt 插件每个模块要单独引用

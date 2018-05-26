@@ -26,6 +26,7 @@ android {
 }
 
 dependencies {
+    // 注意使用 api 方式引用库
     api fileTree(include: ['*.jar'], dir: 'libs')
     api support_appcompat_v7
     api support_design

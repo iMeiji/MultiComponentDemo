@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest package="com.meiji.moduledashboard">
+
+    <!--不需要配置 debug 文件夹下的 Activity-->
+    <application/>
+
+</manifest>

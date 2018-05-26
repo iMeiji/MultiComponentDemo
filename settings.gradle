@@ -1,1 +1,1 @@
-include ':app', ':commonBase', ':moduleHome', ':moduledashboard'
+include ':app', ':commonBase', ':moduleHome', ':moduleDashboard', ':moduleNotifications'

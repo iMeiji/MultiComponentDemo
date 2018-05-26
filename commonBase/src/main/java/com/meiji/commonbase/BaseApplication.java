@@ -4,6 +4,9 @@ import android.app.Application;
 
 import com.alibaba.android.arouter.launcher.ARouter;
 
+/**
+ * 所有 module 单独运行时必须使用 BaseApplication
+ */
 public class BaseApplication extends Application {
 
     @Override

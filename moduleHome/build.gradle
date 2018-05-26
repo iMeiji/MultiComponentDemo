@@ -49,12 +49,16 @@ android {
 
     sourceSets {
         main {
+            // 设置两套 AndroidManifest
             if (isBuildModule.toBoolean()) {
-                manifest.srcFile 'src/main/debug/AndroidManifest.xml'
+                manifest.srcFile 'src/main/AndroidManifestDebug.xml'
             } else {
                 manifest.srcFile 'src/main/AndroidManifest.xml'
-                // release模式下排除debug文件夹中的所有Java文件
+                // release模式下排除debug文件夹中的所有Java和Kotlin文件
                 java {
+                    exclude 'debug/**'
+                }
+                kotlin {
                     exclude 'debug/**'
                 }
             }

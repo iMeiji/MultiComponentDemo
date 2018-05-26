@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest package="com.meiji.modulehome">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+          package="com.meiji.modulehome">
 
-    <application></application>
+    <!--不需要配置 debug 文件夹下的 Activity-->
+    <application>
+        <activity android:name="com.meiji.modulehome.HomeActivity"/>
+    </application>
 
 </manifest>

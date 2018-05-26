@@ -3,15 +3,18 @@ package com.meiji.modulehome;
 import android.content.Context;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
-import com.meiji.commonbase.RouterConstant;
+import com.meiji.commonbase.Constant;
 import com.meiji.commonbase.router.IModuleHomeProvider;
 
-@Route(path = RouterConstant.toHomeProvider)
+/**
+ * 模块服务，其他组件通过 IModuleHomeProvider 接口来调用服务
+ */
+@Route(path = Constant.Router.toHomeProvider)
 public class HomeProvider implements IModuleHomeProvider {
     @Override
-    public String getHomeName(int newsId) {
+    public String showMsg(String msg) {
 
-        return getClass().getSimpleName() + " " + newsId;
+        return msg;
     }
 
     @Override
