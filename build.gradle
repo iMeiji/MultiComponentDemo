@@ -26,3 +26,30 @@ allprojects {
 task clean(type: Delete) {
     delete rootProject.buildDir
 }
+
+subprojects {
+    afterEvaluate {project ->
+        if (project.hasProperty("android")) {
+            android {
+
+                compileSdkVersion rootProject.ext.android.compileSdkVersion
+                buildToolsVersion rootProject.ext.android.buildToolsVersion
+
+                defaultConfig {
+                    minSdkVersion rootProject.ext.android.minSdkVersion
+                    targetSdkVersion rootProject.ext.android.targetSdkVersion
+                    versionCode rootProject.ext.android.versionCode
+                    versionName rootProject.ext.android.versionName
+
+                    vectorDrawables.useSupportLibrary = true
+                    multiDexEnabled true
+                }
+
+                compileOptions {
+                    sourceCompatibility JavaVersion.VERSION_1_8
+                    targetCompatibility JavaVersion.VERSION_1_8
+                }
+            }
+        }
+    }
+}
